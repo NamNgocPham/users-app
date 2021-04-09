@@ -6,6 +6,7 @@ const ListUser = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [usersPerPage, setUsersPage] = useState(3);
+  setUsersPage(3);
 
   const { users } = useContext(UserContext);
   

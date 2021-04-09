@@ -20,6 +20,7 @@ const EditUser = () => {
 
   const { users } = useContext(UserContext);
   
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const loadUser = () => {
     users.map(user => {
       if (user.id === id) {
@@ -38,7 +39,7 @@ const EditUser = () => {
 
   useEffect(() => {
     loadUser();
-  }, [])
+  }, [loadUser])
 
 
   const { name, email, role, created } = user;
