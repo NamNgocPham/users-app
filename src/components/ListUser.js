@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useState } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { UserContext } from '../contexts/UserContext';
 import ListUserItem from './ListUserItem';
 
@@ -9,7 +9,7 @@ const ListUser = () => {
   // setUsersPage(3);
 
   const { users } = useContext(UserContext);
-  
+
   const { searchItem } = useContext(UserContext);
 
   // const indexOfLastUser = currentPage * usersPerPage;
