@@ -5,8 +5,7 @@ export const UserContext = createContext();
 const UserContextProvider = ({ children }) => {
   const [users, setUser] = useState([]);
   const [searchItem, setSearchItem] = useState('');
-  const [currentPage, setCurrentPage] = useState(1);
-  const [usersPerPage, usersPage] = useState(3);
+
 
   useEffect(() => {
     // console.log('getting users');
@@ -42,8 +41,6 @@ const UserContextProvider = ({ children }) => {
   const userContextData = {
     users,
     searchItem,
-    currentPage,
-    usersPage,
     addUser,
     deleteUser,
     onFilter

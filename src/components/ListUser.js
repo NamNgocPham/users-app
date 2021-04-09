@@ -1,12 +1,47 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment, useContext, useState } from 'react';
 import { UserContext } from '../contexts/UserContext';
 import ListUserItem from './ListUserItem';
 
 const ListUser = () => {
 
-  const { users } = useContext(UserContext);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [usersPerPage, setUsersPage] = useState(3);
 
-  const { searchItem } = useContext(UserContext)
+  const { users } = useContext(UserContext);
+  
+  const { searchItem } = useContext(UserContext);
+
+  const indexOfLastUser = currentPage * usersPerPage;
+  const indexOfFirstUser = indexOfLastUser - usersPerPage;
+  const currentUser = users.slice(indexOfFirstUser, indexOfLastUser);
+  // console.log(currentUser) 
+
+  const renderUsers = currentUser.map((user, index) => {
+    return (<ListUserItem key={index} index={index} user={user} />)
+  })
+  console.log(renderUsers)
+
+  const handleClick = event => {
+    setCurrentPage(Number(event.target.id))
+  }
+
+  const pageNumbers = [];
+  for (let i = 1; i <= Math.ceil(users.length / usersPerPage); i++) {
+    pageNumbers.push(i);
+  }
+
+  const renderPageNumbers = pageNumbers.map(number => {
+    return (
+      <li 
+        key={number} 
+        id={number}
+        onClick={handleClick}
+        className="pageItem mr-2"
+      >
+        <button className="page-link">{number}</button>
+      </li>
+    )
+  })
 
   return (
     <Fragment>
@@ -23,8 +58,8 @@ const ListUser = () => {
           </tr>
         </thead>
         <tbody>
-          
           {
+           
             // eslint-disable-next-line array-callback-return
             users.filter(value => {
               if (searchItem === "") {
@@ -38,6 +73,7 @@ const ListUser = () => {
               )
             })
           }
+          
         </tbody>
       </table>
       <div className="container-fluid">
@@ -47,11 +83,7 @@ const ListUser = () => {
      <div className="container-fluid">
         <nav aria-label="Page navigation example">
           <ul className="pagination">
-            <li className="page-item"><a className="page-link" href="/#">Previous</a></li>
-            <li className="page-item"><a className="page-link" href="/#">1</a></li>
-            <li className="page-item"><a className="page-link" href="/#">2</a></li>
-            <li className="page-item"><a className="page-link" href="/#">3</a></li>
-            <li className="page-item"><a className="page-link" href="/#">Next</a></li>
+            {renderPageNumbers}
           </ul>
         </nav>
      </div>
