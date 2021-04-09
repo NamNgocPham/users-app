@@ -4,45 +4,45 @@ import ListUserItem from './ListUserItem';
 
 const ListUser = () => {
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [usersPerPage, setUsersPage] = useState(3);
-  setUsersPage(3);
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [usersPerPage, setUsersPage] = useState(3);
+  // setUsersPage(3);
 
   const { users } = useContext(UserContext);
   
   const { searchItem } = useContext(UserContext);
 
-  const indexOfLastUser = currentPage * usersPerPage;
-  const indexOfFirstUser = indexOfLastUser - usersPerPage;
-  const currentUser = users.slice(indexOfFirstUser, indexOfLastUser);
+  // const indexOfLastUser = currentPage * usersPerPage;
+  // const indexOfFirstUser = indexOfLastUser - usersPerPage;
+  // const currentUser = users.slice(indexOfFirstUser, indexOfLastUser);
   // console.log(currentUser) 
 
-  const renderUsers = currentUser.map((user, index) => {
-    return (<ListUserItem key={index} index={index} user={user} />)
-  })
-  console.log(renderUsers)
+  // const renderUsers = currentUser.map((user, index) => {
+  //   return (<ListUserItem key={index} index={index} user={user} />)
+  // })
+  // console.log(renderUsers)
 
-  const handleClick = event => {
-    setCurrentPage(Number(event.target.id))
-  }
+  // const handleClick = event => {
+  //   setCurrentPage(Number(event.target.id))
+  // }
 
-  const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(users.length / usersPerPage); i++) {
-    pageNumbers.push(i);
-  }
+  // const pageNumbers = [];
+  // for (let i = 1; i <= Math.ceil(users.length / usersPerPage); i++) {
+  //   pageNumbers.push(i);
+  // }
 
-  const renderPageNumbers = pageNumbers.map(number => {
-    return (
-      <li 
-        key={number} 
-        id={number}
-        onClick={handleClick}
-        className="pageItem mr-2"
-      >
-        <button className="page-link">{number}</button>
-      </li>
-    )
-  })
+  // const renderPageNumbers = pageNumbers.map(number => {
+  //   return (
+  //     <li 
+  //       key={number} 
+  //       id={number}
+  //       onClick={handleClick}
+  //       className="pageItem mr-2"
+  //     >
+  //       <button className="page-link">{number}</button>
+  //     </li>
+  //   )
+  // })
 
   return (
     <Fragment>
@@ -81,13 +81,15 @@ const ListUser = () => {
         <p className="text-left">Total User : {users.length}</p>
       </div>
 
-     <div className="container-fluid">
+    {/*
+       <div className="container-fluid">
         <nav aria-label="Page navigation example">
           <ul className="pagination">
             {renderPageNumbers}
           </ul>
         </nav>
      </div>
+    */}
 
     </Fragment>
   )
