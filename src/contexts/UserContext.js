@@ -35,7 +35,7 @@ const UserContextProvider = ({ children }) => {
 
   const onFilter = event => {
     setSearchItem(event.target.value)
-    console.log(event.target.value)
+    // console.log(event.target.value)
   }
 
   const userContextData = {
