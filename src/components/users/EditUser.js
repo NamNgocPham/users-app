@@ -20,26 +20,25 @@ const EditUser = () => {
 
   const { users } = useContext(UserContext);
   
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const loadUser = () => {
-    users.map(user => {
-      if (user.id === id) {
-        setUser({
-          id: id,
-          name: user.name,
-          email: user.email,
-          role: user.role,
-          created: user.created,
-          update: user.update
-        })
-      }
-      return user;
-    })
-  }
 
   useEffect(() => {
+    const loadUser = () => {
+      users.map(user => {
+        if (user.id === id) {
+          setUser({
+            id: id,
+            name: user.name,
+            email: user.email,
+            role: user.role,
+            created: user.created,
+            update: user.update
+          })
+        }
+        return user;
+      })
+    }
     loadUser();
-  }, [loadUser])
+  }, [id, users])
 
 
   const { name, email, role, created } = user;
