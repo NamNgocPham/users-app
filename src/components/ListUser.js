@@ -73,15 +73,13 @@ const ListUser = () => {
         <p className="text-left">Total User : {users.length}</p>
       </div>
 
-    {
-       <div className="container-fluid">
+      <div className="container-fluid">
         <nav aria-label="Page navigation example">
           <ul className="pagination">
             { renderPageNumbers }
           </ul>
         </nav>
      </div>
-    }
 
     </Fragment>
   )

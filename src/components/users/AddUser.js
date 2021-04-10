@@ -29,7 +29,7 @@ const AddUser = () => {
     event.preventDefault();
     const date = new Date();
     const createdDate= `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
-    user.created= createdDate;
+    user.created = createdDate;
     setUser(user);
     // console.log(typeof user.created);
     addUser(user);
@@ -62,39 +62,17 @@ const AddUser = () => {
             />
           </div>
           <div className="form-group">
-            <input 
-              type="text" 
-              className="form-control"
-              placeholder="Enter Your Role"
+            <select 
+              className="form-select form-select-sm form-control"
               name="role"
               value={role}
               onChange={onInputChange}
-            />
+            >
+              <option>Choose your role</option>
+              <option value="Admin">Admin</option>
+              <option value="User">User</option>
+            </select>
           </div>
-          {/*
-            
-            <div className="form-group">
-              <input 
-                type="text" 
-                className="form-control"
-                placeholder="Enter Your Created Date"
-                name="created"
-                value={created}
-                onChange={onInputChange}
-              />
-            </div>
-            <div className="form-group">
-              <input 
-                type="text" 
-                className="form-control"
-                placeholder="Enter Your Update Date"
-                name="update"
-                value={update}
-                onChange={onInputChange}
-              />
-            </div>
-          */}
-          
           <button className="btn btn-primary btn-block">Add User</button>
         </form>
       </div>

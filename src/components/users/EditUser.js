@@ -41,7 +41,7 @@ const EditUser = () => {
   }, [id, users])
 
 
-  const { name, email, role, created } = user;
+  const { name, email, role } = user;
 
   const onInputChange = event => {
     setUser({...user, [event.target.name] : event.target.value});
@@ -54,23 +54,21 @@ const EditUser = () => {
     const date = new Date();
     const updateDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
 
-    // eslint-disable-next-line array-callback-return
+    
     users.map(user => {
       if (user.id === id) {
         user.name = name
         user.email = email
         user.role = role
-        user.created = created
         user.update = updateDate
     
-        return users;
       }
-      
+      return users;
     })
     
     setUser(user);
     localStorage.setItem('users', JSON.stringify(users));
-    history.push("/");
+    history.push('/');
   }
 
   
@@ -101,37 +99,17 @@ const EditUser = () => {
             />
           </div>
           <div className="form-group">
-            <input 
-              type="text" 
-              className="form-control"
-              placeholder="Enter Your Role"
+            <select 
+              className="form-select form-select-sm form-control"
               name="role"
               value={role}
               onChange={onInputChange}
-            />
+            >
+              <option>Choose your role</option>
+              <option value="Admin">Admin</option>
+              <option value="user">User</option>
+            </select>
           </div>
-          {/*
-            <div className="form-group">
-            <input 
-              type="text" 
-              className="form-control"
-              placeholder="Enter Your Created Date"
-              name="created"
-              value={created}
-              onChange={onInputChange}
-            />
-          </div>
-          <div className="form-group">
-            <input 
-              type="text" 
-              className="form-control"
-              placeholder="Enter Your Update Date"
-              name="update"
-              value={update}
-              onChange={onInputChange}
-            />
-          </div>
-          */}
           <button className="btn btn-primary btn-block">Update User</button>
         </form>
       </div>
